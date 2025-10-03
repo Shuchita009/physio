@@ -21,6 +21,27 @@ mongo_url = os.environ.get('MONGO_URL', 'mongodb://localhost:27017')
 client = AsyncIOMotorClient(mongo_url)
 db = client[os.environ.get('DB_NAME', 'physio_app')]
 
+# Helpers
+def _convert_object_ids(value):
+    """Recursively convert any bson ObjectId instances to strings."""
+    if isinstance(value, ObjectId):
+        return str(value)
+    if isinstance(value, list):
+        return [_convert_object_ids(item) for item in value]
+    if isinstance(value, dict):
+        return {key: _convert_object_ids(val) for key, val in value.items()}
+    return value
+
+def serialize_mongo_document(document: dict) -> dict:
+    """Return a copy of the Mongo document safe for JSON: set id, drop _id, stringify ObjectIds."""
+    if not document:
+        return document
+    safe_doc = _convert_object_ids(document.copy())
+    if "_id" in safe_doc:
+        safe_doc["id"] = safe_doc["_id"]
+        safe_doc.pop("_id", None)
+    return safe_doc
+
 # Models
 class Service(BaseModel):
     id: str = Field(default_factory=lambda: str(uuid.uuid4()))
@@ -138,7 +159,8 @@ router = APIRouter()
 async def get_services():
     try:
         services = await db.services.find().to_list(None)
-        return services
+        # Remove Mongo's _id to avoid leaking ObjectId in responses
+        return [serialize_mongo_document(service) for service in services]
     except Exception as e:
         logging.error(f"Error fetching services: {e}")
         raise HTTPException(status_code=500, detail="Failed to fetch services")
@@ -149,7 +171,7 @@ async def get_service(service_id: str):
         service = await db.services.find_one({"id": service_id})
         if not service:
             raise HTTPException(status_code=404, detail="Service not found")
-        return service
+        return serialize_mongo_document(service)
     except Exception as e:
         logging.error(f"Error fetching service {service_id}: {e}")
         raise HTTPException(status_code=500, detail="Failed to fetch service")
@@ -166,8 +188,7 @@ async def get_testimonials():
         testimonials_cursor = db.testimonials.find({"isApproved": True}).sort("createdAt", -1)
         testimonials = []
         async for doc in testimonials_cursor:
-            doc["id"] = str(doc["_id"])
-            testimonials.append(doc)
+            testimonials.append(serialize_mongo_document(doc))
         return {"testimonials": testimonials}
     except Exception as e:
         logging.error(f"Error fetching testimonials: {e}")
@@ -184,8 +205,10 @@ async def create_testimonial(payload: TestimonialCreate):
         # Fetch the created document to ensure it has _id, then convert _id to id string
         created_testimonial_doc = await db.testimonials.find_one({"_id": result.inserted_id})
         if created_testimonial_doc:
-            created_testimonial_doc["id"] = str(created_testimonial_doc["_id"])
-            return Testimonial(**created_testimonial_doc)
+            # Keep alias key _id but ensure it's a string for Pydantic to accept
+            created = created_testimonial_doc.copy()
+            created["_id"] = str(created["_id"])  # stringify ObjectId
+            return Testimonial(**created)
         raise HTTPException(status_code=500, detail="Failed to retrieve created testimonial")
     except Exception as e:
         logging.error(f"Error creating testimonial: {e}")
@@ -231,7 +254,7 @@ async def get_doctor_info():
                 recoveryRate="",
             )
             return {"doctorInfo": default.dict()}
-        return {"doctorInfo": doc}
+        return {"doctorInfo": serialize_mongo_document(doc)}
     except Exception as e:
         logging.error(f"Error fetching doctor info: {e}")
         raise HTTPException(status_code=500, detail="Failed to fetch doctor info")
