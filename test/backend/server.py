@@ -133,19 +133,16 @@ app = FastAPI(
 async def root():
     return RedirectResponse(url="/docs")
 
-# Configure CORS
+# Configure CORS from environment
+allowed_origins_env = os.environ.get("ALLOWED_ORIGINS", "*")
+if allowed_origins_env.strip() == "*":
+    cors_allow_origins = ["*"]
+else:
+    cors_allow_origins = [o.strip() for o in allowed_origins_env.split(",") if o.strip()]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "*",  # Allow all origins for now; restrict in production
-        "http://localhost",
-        "http://localhost:3000",
-        "http://localhost:3001",
-        "http://localhost:3002",
-        "http://localhost:3003",
-        "http://localhost:3004",
-        "http://localhost:3005",
-    ],
+    allow_origins=cors_allow_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
