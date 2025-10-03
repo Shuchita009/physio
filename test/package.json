@@ -2,6 +2,7 @@
   "name": "test",
   "version": "0.1.0",
   "private": true,
+  "proxy": "https://physio-backend-production-1a1b.up.railway.app",
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.3",
     "@testing-library/dom": "^10.4.1",
