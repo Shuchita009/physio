@@ -1,4 +1,11 @@
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || "https://physio-backend-production-1a1b.up.railway.app" || (typeof window !== 'undefined' ? window.location.origin : '');
+const RAW_BACKEND_URL = process.env.REACT_APP_BACKEND_URL || "https://physio-backend-production-1a1b.up.railway.app" || (typeof window !== 'undefined' ? window.location.origin : '');
+const NORMALIZED_BACKEND_URL = (RAW_BACKEND_URL || '').replace(/\/+$/, '');
+const IS_BROWSER = typeof window !== 'undefined';
+const IS_LOCAL_URL = (url) => /localhost|127\.0\.0\.1/.test(url || '');
+const IN_PROD_BROWSER = IS_BROWSER && !IS_LOCAL_URL(window.location.hostname);
+const BACKEND_URL = IN_PROD_BROWSER && IS_LOCAL_URL(NORMALIZED_BACKEND_URL)
+  ? "https://physio-backend-production-1a1b.up.railway.app"
+  : NORMALIZED_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
 
 // Generic API request handler
