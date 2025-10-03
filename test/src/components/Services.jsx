@@ -229,7 +229,8 @@ import { Badge } from './ui/badge';
 import { Button } from './ui/button';
 import { Clock, IndianRupee, CheckCircle } from 'lucide-react';
 import { servicesAPI } from '../services/api';
-import { services as mockServices } from '../mock';
+import { services as mockServices, contactInfo } from '../mock';
+import { sendWhatsAppMessage } from '../utils/communication';
 
 export const Services = () => {
   const [services, setServices] = useState([]);
@@ -287,6 +288,11 @@ export const Services = () => {
     );
   }
 
+  const handleBookService = (serviceTitle) => {
+    const message = `Dear Dr. SS, I am interested in the ${serviceTitle} service. Please contact me to discuss this further and schedule an appointment.`;
+    sendWhatsAppMessage(contactInfo.phone, message);
+  };
+
   return (
     <section id="services" className="py-16 lg:py-24 bg-gradient-to-br from-gray-50 to-blue-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -340,7 +346,10 @@ export const Services = () => {
                   </ul>
                 </div>
 
-                <Button className="w-full bg-teal-600 hover:bg-teal-700 text-white transition-colors duration-200">
+                <Button 
+                  className="w-full bg-teal-600 hover:bg-teal-700 text-white transition-colors duration-200"
+                  onClick={() => handleBookService(service.title)}
+                >
                   Book This Service
                 </Button>
               </CardContent>
@@ -385,3 +394,5 @@ export const Services = () => {
     </section>
   );
 };
+
+export default Services;

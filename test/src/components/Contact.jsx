@@ -144,7 +144,7 @@ export const Contact = () => {
               <CardContent className="space-y-3">
                 <div className="flex items-center space-x-3">
                   <Phone className="w-4 h-4 text-gray-500" />
-                  <span className="text-gray-700">+91 98765 43210</span>
+                  <span className="text-gray-700">+91 81234 99860</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Mail className="w-4 h-4 text-gray-500" />
@@ -310,7 +310,7 @@ export const Contact = () => {
               </div>
               <div style={{display:'flex',alignItems:'center',gap:10,marginBottom:8}}>
                 <Phone/>
-                <span>+91 98765 43210</span>
+                <span>+91 81234 99860</span>
               </div>
               <div style={{display:'flex',alignItems:'center',gap:10,marginBottom:18}}>
                 <Mail/>
