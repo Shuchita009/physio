@@ -1,9 +1,10 @@
+// Resolve backend URL with sensible fallbacks that never use localhost in production builds
 const DEFAULT_BACKEND_URL = "https://physio-backend-production-1a1b.up.railway.app";
-const BACKEND_URL =
-  (process.env.REACT_APP_BACKEND_URL && process.env.REACT_APP_BACKEND_URL.trim() !== ""
-    ? process.env.REACT_APP_BACKEND_URL
-    : DEFAULT_BACKEND_URL);
-const API = `${BACKEND_URL}/api`;
+const envBackendUrl = (process.env.REACT_APP_BACKEND_URL || "").trim();
+// If running via CRA dev server with a proxy, window.location.origin is the frontend host, not backend
+// We only trust env var; otherwise fall back to production default
+const BACKEND_URL = envBackendUrl !== "" ? envBackendUrl : DEFAULT_BACKEND_URL;
+const API = `${BACKEND_URL.replace(/\/$/, '')}/api`;
 
 // Generic API request handler
 const apiRequest = async (endpoint, options = {}) => {
