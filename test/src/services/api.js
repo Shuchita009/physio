@@ -1,4 +1,4 @@
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || (typeof window !== 'undefined' ? window.location.origin : '');
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || "https://physio-backend-production-1a1b.up.railway.app" || (typeof window !== 'undefined' ? window.location.origin : '');
 const API = `${BACKEND_URL}/api`;
 
 // Generic API request handler

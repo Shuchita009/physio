@@ -354,9 +354,9 @@ export const Contact = () => {
               Trusted by Olympic athletes and sports champions worldwide.
             </div>
             <div style={{display:'flex',gap:12}}>
-              <a href="#" style={{background:'#232b39',borderRadius:8,padding:8,display:'inline-flex'}}><Linkedin/></a>
-              <a href="#" style={{background:'#232b39',borderRadius:8,padding:8,display:'inline-flex'}}><Instagram/></a>
-              <a href="#" style={{background:'#232b39',borderRadius:8,padding:8,display:'inline-flex'}}><Facebook/></a>
+              <a href="#" target="_blank" rel="noopener noreferrer" style={{background:'#232b39',borderRadius:8,padding:8,display:'inline-flex'}}><Linkedin/></a>
+              <a href="#" target="_blank" rel="noopener noreferrer" style={{background:'#232b39',borderRadius:8,padding:8,display:'inline-flex'}}><Instagram/></a>
+              <a href="#" target="_blank" rel="noopener noreferrer" style={{background:'#232b39',borderRadius:8,padding:8,display:'inline-flex'}}><Facebook/></a>
             </div>
           </div>
         </div>
