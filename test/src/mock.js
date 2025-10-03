@@ -53,8 +53,8 @@ export const services = [
 ];
 
 export const testimonials = [
-  { id: 't1', name: 'Rahul Sharma', sport: 'Cricket', rating: 5, comment: "The ergonomic consultation and movement analysis significantly improved my performance.", achievement: 'IPL Player' },
-  { id: 't2', name: 'Priya Singh', sport: 'Tennis', rating: 5, comment: "Dr. Siddharth's post-surgical rehabilitation helped me return to tennis after my shoulder surgery.", achievement: 'National Champion' },
-  { id: 't3', name: 'Saina Nehwal', sport: 'Badminton', rating: 5, comment: "His understanding of athlete needs is exceptional.", achievement: 'Olympic Bronze Medalist' },
-  { id: 't4', name: 'Lakshya Sen', sport: 'Badminton', rating: 5, comment: "Highly recommend his services.", achievement: 'World Championship Medalist' }
+  { id: 't1', name: 'S', sport: 'Cricket', rating: 5, comment: "The ergonomic consultation and movement analysis significantly improved my performance.", achievement: 'IPL Player' },
+  { id: 't2', name: 'PS', sport: 'Tennis', rating: 5, comment: "Dr. Siddharth's post-surgical rehabilitation helped me return to tennis after my shoulder surgery.", achievement: 'National Champion' },
+  { id: 't3', name: 'SN', sport: 'Badminton', rating: 5, comment: "His understanding of athlete needs is exceptional.", achievement: 'Olympic Bronze Medalist' },
+  { id: 't4', name: 'LS', sport: 'Badminton', rating: 5, comment: "Highly recommend his services.", achievement: 'World Championship Medalist' }
 ];

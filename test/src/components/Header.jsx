@@ -8,7 +8,7 @@ export const Header = () => {
       <div style={{display:'flex',alignItems:'center',justifyContent:'space-between',height:60,padding:'0 18px'}}>
         <div style={{display:'flex',alignItems:'center',gap:12}}>
           <div style={{width:38,height:38,borderRadius:12,background:'linear-gradient(135deg,#2563eb,#06b6d4)',display:'flex',alignItems:'center',justifyContent:'center',color:'#fff',fontWeight:700,fontSize:18}}>DS</div>
-          <div style={{fontWeight:700,fontSize:16}}>Dr. Siddharth Sakalle</div>
+          <div style={{fontWeight:700,fontSize:16}}>Dr. S S</div>
         </div>
         <button aria-label="Menu" style={{background:'none',border:'none',padding:6}} onClick={()=>setOpen(true)}>
           <Menu size={28}/>
@@ -19,7 +19,7 @@ export const Header = () => {
           <div style={{display:'flex',alignItems:'center',justifyContent:'space-between',height:60,padding:'0 18px'}}>
             <div style={{display:'flex',alignItems:'center',gap:12}}>
               <div style={{width:38,height:38,borderRadius:12,background:'linear-gradient(135deg,#2563eb,#06b6d4)',display:'flex',alignItems:'center',justifyContent:'center',color:'#fff',fontWeight:700,fontSize:18}}>DS</div>
-              <div style={{fontWeight:700,fontSize:16,color:'#fff'}}>Dr. Siddharth Sakalle</div>
+              <div style={{fontWeight:700,fontSize:16,color:'#fff'}}>Dr. S S</div>
             </div>
             <button aria-label="Close" style={{background:'none',border:'none',padding:6}} onClick={()=>setOpen(false)}>
               <X size={28} color="#fff"/>

@@ -78,7 +78,7 @@ export const Testimonials = () => {
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
             Read what Olympic medalists and professional athletes say about their experience 
-            with Dr. Siddharth Sakalle's physiotherapy services.
+            with Dr. S S physiotherapy services.
           </p>
         </div>
 

@@ -110,7 +110,7 @@ export const Contact = () => {
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
             Ready to start your journey to optimal health and performance? Schedule a consultation 
-            with Dr. Siddharth Sakalle today.
+            with Dr. S S today.
           </p>
         </div>
 
@@ -350,7 +350,7 @@ export const Contact = () => {
           <hr style={{border:'none',borderTop:'1px solid #232b39',margin:'32px 0 18px 0'}}/>
           <div style={{display:'flex',justifyContent:'space-between',alignItems:'center',flexWrap:'wrap',gap:16}}>
             <div style={{fontSize:14}}>
-              © 2025 Dr. Siddharth Sakalle. All rights reserved.<br/>
+              © 2025 Dr. S S. All rights reserved.<br/>
               Trusted by Olympic athletes and sports champions worldwide.
             </div>
             <div style={{display:'flex',gap:12}}>

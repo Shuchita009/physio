@@ -194,7 +194,7 @@ async def get_doctor_info():
         doc = await db.doctor_info.find_one({})
         if not doc:
             default = DoctorInfo(
-                name="Dr. Siddharth Sakalle",
+                name="Dr. S S",
                 title="Sports Physiotherapist",
                 organization="",
                 phone="",
@@ -249,9 +249,9 @@ async def init_db():
         await db.testimonials.insert_many([
             {
                 "id": str(uuid.uuid4()),
-                "name": "Rahul Sharma",
+                "name": "R S",
                 "sport": "Cricket",
-                "achievement": "IPL Player",
+                "achievement": "Satisfied Client",
                 "rating": 5,
                 "comment": "The ergonomic consultation and movement analysis significantly improved my performance.",
                 "image": "",
@@ -260,9 +260,9 @@ async def init_db():
             },
             {
                 "id": str(uuid.uuid4()),
-                "name": "Priya Singh",
+                "name": "P",
                 "sport": "Tennis",
-                "achievement": "National Champion",
+                "achievement": "Satisfied Client",
                 "rating": 5,
                 "comment": "Post-surgical rehab helped me return stronger after my shoulder surgery.",
                 "image": "",

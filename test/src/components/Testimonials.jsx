@@ -37,7 +37,7 @@ export const Testimonials = () => {
     <section className="section-card" style={{marginTop:18}}>
       <span className="hero-badge">Patient Testimonials</span>
       <h2 className="hero-title" style={{margin:'12px 0 8px 0',fontSize:22,textAlign:'left'}}>Trusted by <span className="accent">Elite Athletes</span></h2>
-      <div className="hero-sub" style={{marginBottom:12,textAlign:'left'}}>Read what Olympic medalists and professional athletes say about their experience with Dr. Siddharth Sakalle's physiotherapy services.</div>
+      <div className="hero-sub" style={{marginBottom:12,textAlign:'left'}}>Read what Olympic medalists and professional athletes say about their experience with Dr. S S's physiotherapy services.</div>
       <div style={{display:'flex',flexDirection:'column',gap:18}}>
         {testimonials.map((t) => (
           <div key={t.id} style={{background:'#f7fbff',borderRadius:14,boxShadow:'0 2px 8px #e0e7ef22',padding:16,marginBottom:2}}>
