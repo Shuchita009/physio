@@ -42,6 +42,14 @@ class Testimonial(BaseModel):
     isApproved: bool = True
     createdAt: datetime = Field(default_factory=datetime.utcnow)
 
+class TestimonialCreate(BaseModel):
+    name: str
+    sport: str
+    achievement: str
+    rating: int
+    comment: str
+    image: str = ""
+
 class AppointmentCreate(BaseModel):
     name: str
     email: EmailStr
@@ -141,11 +149,21 @@ async def health():
 @router.get("/testimonials", response_model=dict)
 async def get_testimonials():
     try:
-        testimonials = await db.testimonials.find().to_list(None)
+        testimonials = await db.testimonials.find({"isApproved": True}).sort("createdAt", -1).to_list(None)
         return {"testimonials": testimonials}
     except Exception as e:
         logging.error(f"Error fetching testimonials: {e}")
         raise HTTPException(status_code=500, detail="Failed to fetch testimonials")
+
+@router.post("/testimonials", response_model=Testimonial)
+async def create_testimonial(payload: TestimonialCreate):
+    try:
+        testimonial = Testimonial(**payload.dict())
+        await db.testimonials.insert_one(testimonial.dict())
+        return testimonial
+    except Exception as e:
+        logging.error(f"Error creating testimonial: {e}")
+        raise HTTPException(status_code=500, detail="Failed to create testimonial")
 
 # Appointments
 @router.post("/appointments", response_model=Appointment)
@@ -227,6 +245,31 @@ SAMPLE_SERVICES = [
 async def init_db():
     if await db.services.count_documents({}) == 0:
         await db.services.insert_many(SAMPLE_SERVICES)
+    if await db.testimonials.count_documents({}) == 0:
+        await db.testimonials.insert_many([
+            {
+                "id": str(uuid.uuid4()),
+                "name": "Rahul Sharma",
+                "sport": "Cricket",
+                "achievement": "IPL Player",
+                "rating": 5,
+                "comment": "The ergonomic consultation and movement analysis significantly improved my performance.",
+                "image": "",
+                "isApproved": True,
+                "createdAt": datetime.utcnow(),
+            },
+            {
+                "id": str(uuid.uuid4()),
+                "name": "Priya Singh",
+                "sport": "Tennis",
+                "achievement": "National Champion",
+                "rating": 5,
+                "comment": "Post-surgical rehab helped me return stronger after my shoulder surgery.",
+                "image": "",
+                "isApproved": True,
+                "createdAt": datetime.utcnow(),
+            },
+        ])
 
 # Include router
 app.include_router(router, prefix="/api")

@@ -117,3 +117,21 @@ npm run build
 ```
 
 Host the `build/` folder on Netlify, Vercel, or any static host. Ensure CORS `ALLOWED_ORIGINS` on backend allows your frontend domain.
+
+## 100% Free Hosting Plan
+
+### Database (Free)
+- Create a free MongoDB Atlas cluster (M0)
+- Get your connection string `MONGO_URL`
+
+### Backend (Free)
+- Use the included `render.yaml` to deploy the FastAPI backend on Render's free plan
+- Set env vars on Render: `MONGO_URL`, `DB_NAME`, `ALLOWED_ORIGINS`
+
+### Frontend on Vercel (Free)
+- Import this repo into Vercel
+- Add environment variable: `REACT_APP_BACKEND_URL=https://<your-render-backend>`
+- Build command: `npm run build` (default)
+- Output directory: `build`
+
+The testimonials section now loads live data from `/api/testimonials` and supports new submissions via `POST /api/testimonials`.
