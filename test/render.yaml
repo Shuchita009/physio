@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: physio-backend
+    env: docker
+    rootDir: backend
+    dockerfilePath: backend/Dockerfile
+    envVars:
+      - key: MONGO_URL
+        sync: false
+      - key: DB_NAME
+        value: physio_app
+      - key: ALLOWED_ORIGINS
+        value: "*"
+    plan: starter
+    region: oregon
+    autoDeploy: true
+

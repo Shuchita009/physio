@@ -1,0 +1,255 @@
+from fastapi import FastAPI, APIRouter, HTTPException
+from fastapi.responses import RedirectResponse
+from dotenv import load_dotenv
+from starlette.middleware.cors import CORSMiddleware
+from motor.motor_asyncio import AsyncIOMotorClient
+import os
+import logging
+from pathlib import Path
+from pydantic import BaseModel, Field, EmailStr
+from typing import List, Optional
+import uuid
+from datetime import datetime
+
+
+ROOT_DIR = Path(__file__).parent
+load_dotenv(ROOT_DIR / '.env')
+
+# MongoDB connection
+mongo_url = os.environ.get('MONGO_URL', 'mongodb://localhost:27017')
+client = AsyncIOMotorClient(mongo_url)
+db = client[os.environ.get('DB_NAME', 'physio_app')]
+
+# Models
+class Service(BaseModel):
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    title: str
+    description: str
+    duration: str
+    price: str
+    features: List[str]
+    created_at: datetime = Field(default_factory=datetime.utcnow)
+    updated_at: datetime = Field(default_factory=datetime.utcnow)
+
+class Testimonial(BaseModel):
+    id: Optional[str] = Field(default_factory=lambda: str(uuid.uuid4()))
+    name: str
+    sport: str
+    achievement: str
+    rating: int
+    comment: str
+    image: str
+    isApproved: bool = True
+    createdAt: datetime = Field(default_factory=datetime.utcnow)
+
+class AppointmentCreate(BaseModel):
+    name: str
+    email: EmailStr
+    phone: str
+    service: Optional[str] = ""
+    preferredDate: Optional[str] = ""
+    message: Optional[str] = ""
+
+class Appointment(BaseModel):
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    name: str
+    email: str
+    phone: str
+    service: str
+    preferredDate: str
+    message: str
+    status: str = "pending"
+    createdAt: datetime = Field(default_factory=datetime.utcnow)
+    updatedAt: datetime = Field(default_factory=datetime.utcnow)
+
+class ContactCreate(BaseModel):
+    name: str
+    email: EmailStr
+    message: str
+    subject: Optional[str] = "General Inquiry"
+
+class Contact(BaseModel):
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    name: str
+    email: str
+    message: str
+    subject: str
+    isRead: bool = False
+    createdAt: datetime = Field(default_factory=datetime.utcnow)
+
+class DoctorInfo(BaseModel):
+    name: str
+    title: str
+    organization: str
+    phone: str
+    email: str
+    location: str
+    experience: str
+    patientsHelped: str
+    recoveryRate: str
+
+# Initialize FastAPI app
+app = FastAPI(
+    title="Physiotherapy Services API",
+    description="API for managing physiotherapy services, appointments, and contacts",
+    version="1.0.0"
+)
+
+@app.get("/", include_in_schema=False)
+async def root():
+    return RedirectResponse(url="/docs")
+
+# Configure CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # In production, replace with your frontend domain
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# Initialize router
+router = APIRouter()
+
+# API endpoints
+@router.get("/services", response_model=List[Service])
+async def get_services():
+    try:
+        services = await db.services.find().to_list(None)
+        return services
+    except Exception as e:
+        logging.error(f"Error fetching services: {e}")
+        raise HTTPException(status_code=500, detail="Failed to fetch services")
+
+@router.get("/services/{service_id}", response_model=Service)
+async def get_service(service_id: str):
+    try:
+        service = await db.services.find_one({"id": service_id})
+        if not service:
+            raise HTTPException(status_code=404, detail="Service not found")
+        return service
+    except Exception as e:
+        logging.error(f"Error fetching service {service_id}: {e}")
+        raise HTTPException(status_code=500, detail="Failed to fetch service")
+
+# Health
+@router.get("/", include_in_schema=False)
+async def health():
+    return {"status": "ok"}
+
+# Testimonials
+@router.get("/testimonials", response_model=dict)
+async def get_testimonials():
+    try:
+        testimonials = await db.testimonials.find().to_list(None)
+        return {"testimonials": testimonials}
+    except Exception as e:
+        logging.error(f"Error fetching testimonials: {e}")
+        raise HTTPException(status_code=500, detail="Failed to fetch testimonials")
+
+# Appointments
+@router.post("/appointments", response_model=Appointment)
+async def create_appointment(payload: AppointmentCreate):
+    try:
+        appointment = Appointment(**payload.dict())
+        await db.appointments.insert_one(appointment.dict())
+        return appointment
+    except Exception as e:
+        logging.error(f"Error creating appointment: {e}")
+        raise HTTPException(status_code=500, detail="Failed to create appointment")
+
+# Contact
+@router.post("/contact", response_model=Contact)
+async def create_contact(payload: ContactCreate):
+    try:
+        contact = Contact(**payload.dict())
+        await db.contacts.insert_one(contact.dict())
+        return contact
+    except Exception as e:
+        logging.error(f"Error creating contact: {e}")
+        raise HTTPException(status_code=500, detail="Failed to create contact")
+
+# Doctor Info
+@router.get("/doctor-info", response_model=dict)
+async def get_doctor_info():
+    try:
+        doc = await db.doctor_info.find_one({})
+        if not doc:
+            default = DoctorInfo(
+                name="Dr. Siddharth Sakalle",
+                title="Sports Physiotherapist",
+                organization="",
+                phone="",
+                email="",
+                location="",
+                experience="",
+                patientsHelped="",
+                recoveryRate="",
+            )
+            return {"doctorInfo": default.dict()}
+        return {"doctorInfo": doc}
+    except Exception as e:
+        logging.error(f"Error fetching doctor info: {e}")
+        raise HTTPException(status_code=500, detail="Failed to fetch doctor info")
+
+# Sample data for testing
+SAMPLE_SERVICES = [
+    {
+        "id": str(uuid.uuid4()),
+        "title": "Sports Rehabilitation",
+        "description": "Comprehensive rehabilitation program for athletes",
+        "duration": "60 min",
+        "price": "₹2000",
+        "features": [
+            "Initial Assessment",
+            "Personalized Treatment Plan",
+            "Progress Tracking",
+            "Home Exercise Program"
+        ]
+    },
+    {
+        "id": str(uuid.uuid4()),
+        "title": "General Physiotherapy",
+        "description": "Treatment for general aches and injuries",
+        "duration": "45 min",
+        "price": "₹1500",
+        "features": [
+            "Physical Assessment",
+            "Manual Therapy",
+            "Exercise Prescription",
+            "Recovery Tips"
+        ]
+    }
+]
+
+# Initialize database with sample data
+@app.on_event("startup")
+async def init_db():
+    if await db.services.count_documents({}) == 0:
+        await db.services.insert_many(SAMPLE_SERVICES)
+
+# Include router
+app.include_router(router, prefix="/api")
+
+if __name__ == "__main__":
+    import uvicorn
+    import socket
+    
+    def find_free_port(start_port, max_attempts=10):
+        for port in range(start_port, start_port + max_attempts):
+            sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            try:
+                sock.bind(('0.0.0.0', port))
+                sock.close()
+                return port
+            except OSError:
+                sock.close()
+                continue
+        raise RuntimeError(f"Could not find a free port in range {start_port}-{start_port + max_attempts}")
+
+    try:
+        port = find_free_port(5000)
+        print(f"Server starting on port {port}")
+        uvicorn.run(app, host="127.0.0.1", port=port)
+    except Exception as e:
+        print(f"Failed to start server: {e}")
