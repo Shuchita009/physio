@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: physio-backend
+    env: docker
+    rootDir: backend
+    dockerfilePath: backend/Dockerfile
+    envVars:
+      - key: MONGO_URL
+        value: mongodb+srv://pareshuchita_db_user:EV31AbNbezwRNk46@drsakalleapp.90dfosa.mongodb.net/?retryWrites=true&w=majority&appName=DrSakalleApp
+      - key: DB_NAME
+        value: physio_app
+      - key: ALLOWED_ORIGINS
+        value: "*"
+    plan: starter
+    region: oregon
+    autoDeploy: true
+
