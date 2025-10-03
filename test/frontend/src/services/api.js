@@ -1,4 +1,8 @@
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+const DEFAULT_BACKEND_URL = "https://physio-backend-production-1a1b.up.railway.app";
+const BACKEND_URL =
+  (process.env.REACT_APP_BACKEND_URL && process.env.REACT_APP_BACKEND_URL.trim() !== ""
+    ? process.env.REACT_APP_BACKEND_URL
+    : DEFAULT_BACKEND_URL);
 const API = `${BACKEND_URL}/api`;
 
 // Generic API request handler
