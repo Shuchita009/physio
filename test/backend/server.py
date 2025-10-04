@@ -262,8 +262,8 @@ SAMPLE_SERVICES = [
         "id": str(uuid.uuid4()),
         "title": "Sports Rehabilitation",
         "description": "Comprehensive rehabilitation program for athletes",
-        "duration": "60 min",
-        "price": "₹2000",
+        # "duration": "60 min",
+        # "price": "₹2000",
         "features": [
             "Initial Assessment",
             "Personalized Treatment Plan",
@@ -275,8 +275,7 @@ SAMPLE_SERVICES = [
         "id": str(uuid.uuid4()),
         "title": "General Physiotherapy",
         "description": "Treatment for general aches and injuries",
-        "duration": "45 min",
-        "price": "₹1500",
+
         "features": [
             "Physical Assessment",
             "Manual Therapy",

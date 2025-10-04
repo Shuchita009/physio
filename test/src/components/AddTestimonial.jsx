@@ -67,9 +67,9 @@ export const AddTestimonial = ({ onTestimonialAdded }) => {
   return (
     <div className="mt-16 bg-white p-8 rounded-xl shadow-lg">
       <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">Share Your Experience</h3>
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
         <div>
-          <label htmlFor="name" className="block text-sm font-medium text-gray-700">Your Name *</label>
+          <label htmlFor="name" className="block text-sm font-medium text-gray-700" style={{ fontSize: '16px', marginBottom: '8px' }}>Name </label>
           <Input
             type="text"
             id="name"
@@ -81,8 +81,8 @@ export const AddTestimonial = ({ onTestimonialAdded }) => {
             className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500"
           />
         </div>
-        <div>
-          <label htmlFor="sport" className="block text-sm font-medium text-gray-700">Your Sport/Activity *</label>
+        {/* <div>
+          <label htmlFor="sport" className="block text-sm font-medium text-gray-700" >Your Sport/Activity </label>
           <Input
             type="text"
             id="sport"
@@ -93,15 +93,15 @@ export const AddTestimonial = ({ onTestimonialAdded }) => {
             required
             className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500"
           />
-        </div>
+        </div> */}
         <div>
-          <label className="block text-sm font-medium text-gray-700">Rating *</label>
-          <div className="flex space-x-1 mt-1">
+          <label className="block text-sm font-medium text-gray-700">Rating </label>
+     
             {[1, 2, 3, 4, 5].map((star) => (
               <Star
                 key={star}
                 className="cursor-pointer transition-colors duration-200"
-                size={24}
+                size={16}
                 fill={star <= (hoverRating || formData.rating) ? '#f59e0b' : 'none'}
                 stroke={star <= (hoverRating || formData.rating) ? '#f59e0b' : '#d1d5db'}
                 onClick={() => handleRatingChange(star)}
@@ -109,10 +109,10 @@ export const AddTestimonial = ({ onTestimonialAdded }) => {
                 onMouseLeave={() => setHoverRating(0)}
               />
             ))}
-          </div>
         </div>
         <div>
-          <label htmlFor="comment" className="block text-sm font-medium text-gray-700">Your Testimonial *</label>
+          <label htmlFor="comment" className="block text-sm font-medium text-gray-700">Your Testimonial </label>
+          <p>
           <Textarea
             id="comment"
             name="comment"
@@ -122,7 +122,7 @@ export const AddTestimonial = ({ onTestimonialAdded }) => {
             rows={4}
             required
             className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500"
-          />
+          /> </p>
         </div>
         <Button
           type="submit"
@@ -130,7 +130,7 @@ export const AddTestimonial = ({ onTestimonialAdded }) => {
           disabled={isSubmitting}
           className="w-full bg-teal-600 hover:bg-teal-700 text-white py-3 rounded-lg transition-all duration-200 flex items-center justify-center space-x-2"
         >
-          <Send className="w-5 h-5" />
+          <Send className="w-2 h-2" />
           <span>{isSubmitting ? 'Submitting...' : 'Submit Testimonial'}</span>
         </Button>
       </form>

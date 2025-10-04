@@ -102,11 +102,10 @@ export const Contact = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center space-y-4 mb-16">
           <Badge className="bg-blue-100 text-blue-800 hover:bg-blue-200">
-            Get in Touch
           </Badge>
           <h2 className="text-4xl lg:text-5xl font-bold text-gray-900">
-            Book Your
-            <span className="text-blue-600 block">Consultation</span>
+            
+            <span className="text-blue-600 block">Book Your Consultation</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
             Ready to start your journey to optimal health and performance? Schedule a consultation 
@@ -144,7 +143,7 @@ export const Contact = () => {
               <CardContent className="space-y-3">
                 <div className="flex items-center space-x-3">
                   <Phone className="w-4 h-4 text-gray-500" />
-                  <span className="text-gray-700">+91 81234 99860</span>
+                  <span className="text-gray-700">+919592948779</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Mail className="w-4 h-4 text-gray-500" />
@@ -226,7 +225,7 @@ export const Contact = () => {
                       />
                     </div>
                     <div className="space-y-2">
-                      <label className="text-sm font-medium text-gray-700">Service Required</label>
+                      {/* <label className="text-sm font-medium text-gray-700">Service Required</label> */}
                       <Select onValueChange={handleServiceChange} value={formData.service} disabled={servicesLoading}>
                         <SelectTrigger className="border-gray-300 focus:border-blue-500 focus:ring-blue-500">
                           <SelectValue placeholder={servicesLoading ? "Loading services..." : "Select a service"} />

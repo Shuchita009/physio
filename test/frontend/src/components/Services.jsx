@@ -63,12 +63,10 @@ export const Services = () => {
     <section id="services" className="py-16 lg:py-24 bg-gradient-to-br from-gray-50 to-blue-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center space-y-4 mb-16">
-          <Badge className="bg-teal-100 text-teal-800 hover:bg-teal-200">
-            Professional Services
-          </Badge>
+ 
           <h2 className="text-4xl lg:text-5xl font-bold text-gray-900">
-            Specialized
-            <span className="text-teal-600 block">Physiotherapy Services</span>
+            
+            <span className="text-teal-600 block">Specialized Physiotherapy Services</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
             Evidence-based treatments tailored for athletes and individuals seeking optimal physical performance and recovery.
