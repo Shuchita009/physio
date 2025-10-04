@@ -26,7 +26,7 @@ export const Header = () => {
             </button>
           </div>
           <nav style={{display:'flex',flexDirection:'column',alignItems:'center',gap:28,marginTop:48}}>
-            <a href="#about" onClick={()=>setOpen(false)} style={{color:'#fff',fontSize:20,textDecoration:'none'}}>About Doctor</a>
+            <a href="#about-dr" onClick={()=>setOpen(false)} style={{color:'#fff',fontSize:20,textDecoration:'none'}}>About Doctor</a>
             <a href="#services" onClick={()=>setOpen(false)} style={{color:'#fff',fontSize:20,textDecoration:'none'}}>Services</a>
             <a href="#testimonials" onClick={()=>setOpen(false)} style={{color:'#fff',fontSize:20,textDecoration:'none'}}>Testimonials</a>
             <a href="#contact" onClick={()=>setOpen(false)} style={{color:'#fff',fontSize:20,textDecoration:'none'}}>Book Appointment</a>

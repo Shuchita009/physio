@@ -17,8 +17,8 @@ export const Hero = () => {
         <h1 className="text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight mb-4">
           Elite Sports <span className="text-blue-600">Physiotherapy</span> Excellence
         </h1>
-        <p className="text-xl text-gray-700 max-w-3xl mb-8 leading-relaxed">
-          Trusted by Olympic athletes and sports champions. Specialized in manual therapy, musculoskeletal rehabilitation, and sports injury recovery with international expertise.
+        <p className="text-xl text-gray-700 max-w-3xl mb-8 leading-relaxed" style={{ maxWidth: 720, margin: '12px auto 0', color: '#374151', lineHeight: 1.6, textAlign: 'justify' }}>
+          Trusted by Olympic athletes and sports champions. Specialized in Manual Physio therapy, Musculoskeletal Rehabilitation, and Sports Injury recovery with international expertise.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
 
@@ -59,14 +59,14 @@ export const Hero = () => {
           </li>
         </ul>
 
-        <div className="flex space-x-4">
+        <div className="flex space-x-4 mb-8">
           <Button
             className="bg-blue-700 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg transition-all duration-200 transform hover:scale-105"
             onClick={handleBookConsultation}
           >
             Book Consultation
           </Button>
-
+         <p></p>
         </div>
       </div>
     </section>

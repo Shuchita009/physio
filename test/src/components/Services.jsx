@@ -82,18 +82,18 @@ export const Services = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
           {services.map((service) => (
             <Card key={service.id} className="group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border-0 shadow-md">
                 <CardContent className="space-y-6 p-6">
                   <CardTitle className="text-xl font-bold mb-2 group-hover:text-teal-600 transition-colors duration-200">
                     {service.title}
                   </CardTitle>
-                  <p className="text-gray-600 leading-relaxed">
+                  <div className="text-gray-600 leading-relaxed">
                     {service.description}
-                  </p>
+                  </div>
                 
-                <div className="space-y-3">
+                <div className="space-y-2">
                   <h4 className="font-semibold text-gray-900 flex items-center">
                     {/* <CheckCircle className="w-4 h-4 text-green-600 mr-2" /> */}
                     What's Included:

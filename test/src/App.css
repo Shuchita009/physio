@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth;
+}
+
 :root {
   --bg-gradient-start: #f8fbff;
   --bg-gradient-end: #f1f9ff;
