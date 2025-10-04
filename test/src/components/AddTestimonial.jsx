@@ -67,7 +67,7 @@ export const AddTestimonial = ({ onTestimonialAdded }) => {
   return (
     <div className="mt-16 bg-white p-8 rounded-xl shadow-lg">
       <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">Share Your Experience</h3>
-      <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+      <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
         <div>
           <label htmlFor="name" className="block text-sm font-medium text-gray-700" style={{ fontSize: '16px', marginBottom: '8px' }}>Name </label>
           <Input
@@ -124,15 +124,31 @@ export const AddTestimonial = ({ onTestimonialAdded }) => {
             className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500"
           /> </p>
         </div>
-        <Button
-          type="submit"
-          size="lg"
-          disabled={isSubmitting}
-          className="w-full bg-teal-600 hover:bg-teal-700 text-white py-3 rounded-lg transition-all duration-200 flex items-center justify-center space-x-2"
-        >
-          <Send className="w-2 h-2" />
-          <span>{isSubmitting ? 'Submitting...' : 'Submit Testimonial'}</span>
-        </Button>
+
+        
+        <div className="w-full flex justify-center">
+          <Button
+            type="submit"
+            disabled={isSubmitting}
+            aria-label="Submit testimonial"
+            className={`px-4 py-2 flex items-center gap-2 ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
+          >
+            {isSubmitting ? (
+              <>
+                <svg className="animate-spin w-5 h-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>
+                </svg>
+                <span>Submitting...</span>
+              </>
+            ) : (
+              <>
+                <Send className="w-5 h-5 text-white" />
+                <span>Submit Testimonial</span>
+              </>
+            )}
+          </Button>
+        </div>
       </form>
     </div>
   );

@@ -9,6 +9,8 @@ import { toast } from '../utils/toast';
 import { MapPin, Phone, Mail, Clock, Send, Linkedin, Instagram, Facebook } from 'lucide-react';
 import { contactInfo } from '../mock';
 import { appointmentsAPI, servicesAPI } from '../services/api';
+// Set the clinic/doctor WhatsApp phone number in international format without + or leading zeros, e.g. '919876543210'
+const WHATSAPP_PHONE = '919592948779';
 
 export const Contact = () => {
   const [formData, setFormData] = useState({
@@ -97,6 +99,48 @@ export const Contact = () => {
     }
   };
 
+  const buildWhatsAppMessage = (data) => {
+    const lines = [
+      'Appointment Request from website',
+      `Name: ${data.name || '-'}`,
+      `Phone: ${data.phone || '-'}`,
+      `Email: ${data.email || '-'}`,
+      `Service: ${data.service || '-'}`,
+      `Preferred Date: ${data.preferredDate || '-'}`,
+      `Message: ${data.message || '-'}`,
+    ];
+
+    // Join with new lines and URL-encode
+    return encodeURIComponent(lines.join('\n'));
+  };
+
+  const handleWhatsApp = (e) => {
+    e.preventDefault();
+
+    if (!formData.name || !formData.phone) {
+      toast.error('Please provide at least your name and phone number to send via WhatsApp');
+      return;
+    }
+
+    // basic email pattern check if email provided
+    if (formData.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      toast.error('Please provide a valid email address');
+      return;
+    }
+
+    const dataForMessage = {
+      ...formData,
+      service: formData.service || '-',
+    };
+
+    const encoded = buildWhatsAppMessage(dataForMessage);
+    // Use wa.me for mobile and whatsapp web fallback
+    const waLink = `https://wa.me/${WHATSAPP_PHONE}?text=${encoded}`;
+
+    // Open in new tab/window
+    window.open(waLink, '_blank');
+  };
+
   return (
     <section id="contact" className="py-16 lg:py-24 bg-gradient-to-br from-slate-50 to-blue-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -113,38 +157,37 @@ export const Contact = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-2">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
        
           <div className="lg:col-span-2">
             <Card className="shadow-xl border-0">
-              <CardHeader>
+              {/* <CardHeader>
                 <CardTitle className="text-2xl text-center mb-2">
                   Schedule Your Appointment
                 </CardTitle>
                 <p className="text-gray-600 text-center">
                   Fill out the form below and we'll get back to you within 24 hours
                 </p>
-              </CardHeader>
+              </CardHeader> */}
               <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-2">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                    <div className="space-y-2">
-                      <label className="text-sm font-medium text-gray-700">Full Name </label>
+                <form onSubmit={handleSubmit} className="space-y-8">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div className="space-y-4">
+                      <label className="text-base font-semibold text-gray-900">Full Name </label>
+<div>
                       <Input
                         name="name"
                         value={formData.name}
                         onChange={handleInputChange}
                         placeholder="Enter your full name"
                         required
-                        className="border-gray-300 focus:border-blue-500 focus:ring-blue-500"
-                      />
+                        className="h-12 border-2 border-gray-200 focus:border-blue-500 focus:ring-blue-500 rounded-lg shadow-sm"
+                      /></div>
                     </div>
 
-                  </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <label className="text-sm font-medium text-gray-700">Phone Number </label>
+                    <div className="space-y-4">
+                      <label className="text-base font-semibold text-gray-900">Phone Number </label>
+                      <div>
                       <Input
                         type="tel"
                         name="phone"
@@ -152,14 +195,14 @@ export const Contact = () => {
                         onChange={handleInputChange}
                         placeholder="Enter your phone number"
                         required
-                        className="border-gray-300 focus:border-blue-500 focus:ring-blue-500"
-                      />
+                        className="h-12 border-2 border-gray-200 focus:border-blue-500 focus:ring-blue-500 rounded-lg shadow-sm"
+                      /></div>
                     </div>
-                    <div className="space-y-2">
-                      {/* <label className="text-sm font-medium text-gray-700">Service Required</label> */}
-                      <Select onValueChange={handleServiceChange} value={formData.service} disabled={servicesLoading}>
-                        <SelectTrigger className="border-gray-300 focus:border-blue-500 focus:ring-blue-500">
-                          <SelectValue placeholder={servicesLoading ? "Loading services..." : "Select a service"} />
+                    <div className="flex items-center gap-4">
+                      <label className="text-base font-semibold text-gray-900">Service </label>
+                      <Select onValueChange={handleServiceChange} value={formData.service} disabled={servicesLoading} className="flex-1">
+                        <SelectTrigger className="h-12 border-2 border-gray-200 focus:border-blue-500 focus:ring-blue-500 rounded-lg shadow-sm">
+                          {/* <SelectValue placeholder={servicesLoading ? "Loading services..." : "Select service type"} /> */}
                         </SelectTrigger>
                         <SelectContent>
                           {services.map((service) => (
@@ -172,19 +215,21 @@ export const Contact = () => {
                     </div>
                   </div>
 
-                  <div className="space-y-2">
-                    <label className="text-sm font-medium text-gray-700">Preferred Date</label>
+                  <div className="space-y-3 mt-4">
+                    <label className="block text-base font-semibold text-gray-900 mb-2">Preferred Date</label>
+                    <div>
                     <Input
                       type="date"
                       name="preferredDate"
                       value={formData.preferredDate}
                       onChange={handleInputChange}
-                      className="border-gray-300 focus:border-blue-500 focus:ring-blue-500"
-                    />
+                      className="h-12 px-3 border-2 border-gray-200 focus:border-blue-500 focus:ring-blue-500 rounded-lg bg-white"
+                    /></div>
                   </div>
 
                   <div className="space-y-2">
                     <label className="text-sm font-medium text-gray-700">Message</label>
+                    <p>
                     <Textarea
                       name="message"
                       value={formData.message}
@@ -193,17 +238,19 @@ export const Contact = () => {
                       rows={4}
                       className="border-gray-300 focus:border-blue-500 focus:ring-blue-500"
                     />
+                    </p>
                   </div>
 
-                  <Button 
-                    type="submit" 
-                    size="lg"
-                    disabled={isSubmitting}
-                    className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg transition-all duration-200 transform hover:scale-105 flex items-center justify-center space-x-2"
-                  >
-                    <Send className="w-5 h-5" />
-                    <span>{isSubmitting ? 'Sending...' : 'Send Appointment Request'}</span>
-                  </Button>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                    <Button
+                      type="button"
+                      size="lg"
+                      onClick={handleWhatsApp}
+                      className="w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-lg transition-all duration-200 transform hover:scale-105 flex items-center justify-center space-x-2"
+                    >
+                      <span> Send Appointment on WhatsApp</span>
+                    </Button>
+                  </div>
                 </form>
               </CardContent>
             </Card>
@@ -228,7 +275,7 @@ export const Contact = () => {
       </div>
       <footer style={{background:'#181f2a',color:'#e5e7eb',padding:'40px 0 0 0',marginTop:40}}>
         <div className="container" style={{maxWidth:900,margin:'0 auto',padding:'0 16px'}}>
-          <div style={{display:'flex',flexWrap:'wrap',gap:40,justifyContent:'space-between'}}>
+          <div style={{display:'flex',flexWrap:'wrap',gap:20,justifyContent:'space-between'}}>
             <div style={{minWidth:260,flex:1}}>
               <div style={{fontWeight:700,fontSize:20,marginBottom:18}}>Contact Information</div>
               <div style={{display:'flex',alignItems:'flex-start',gap:10,marginBottom:8}}>
@@ -246,7 +293,7 @@ export const Contact = () => {
                 <Mail/>
                 <span>physio.siddharth@gmail.com</span>
               </div>
-              <div style={{fontWeight:700,marginBottom:6}}>Working Hours</div>
+              <div style={{fontWeight:700,marginBottom:5}}>Working Hours</div>
               <div style={{display:'flex',gap:32}}>
                 <div>
                   <div>Mon - Fri:</div>
@@ -261,14 +308,14 @@ export const Contact = () => {
               </div>
             </div>
             <div style={{minWidth:220,flex:1}}>
-              <div style={{fontWeight:700,fontSize:20,marginBottom:18}}>Quick Links</div>
+              {/* <div style={{fontWeight:700,fontSize:20,marginBottom:18}}>Quick Links</div>
               <div style={{marginBottom:12}}>
                 <div><a href="#about" style={{color:'#e5e7eb',textDecoration:'none'}}>About Doctor</a></div>
                 <div><a href="#services" style={{color:'#e5e7eb',textDecoration:'none'}}>Services</a></div>
                 <div><a href="#testimonials" style={{color:'#e5e7eb',textDecoration:'none'}}>Testimonials</a></div>
                 <div><a href="#contact" style={{color:'#e5e7eb',textDecoration:'none'}}>Book Appointment</a></div>
-              </div>
-              <div style={{fontWeight:700,marginBottom:6}}>Specializations</div>
+              </div> */}
+              <div style={{fontWeight:700,marginBottom:5}}>Specializations</div>
               <div style={{color:'#b6bbc6'}}>
                 <div>Sports Rehabilitation</div>
                 <div>Manual Therapy</div>
@@ -283,10 +330,16 @@ export const Contact = () => {
               © 2025 Dr. S S. All rights reserved.<br/>
               Trusted by Olympic athletes and sports champions worldwide.
             </div>
-            <div style={{display:'flex',gap:12}}>
-              <a href="#" target="_blank" rel="noopener noreferrer" style={{background:'#232b39',borderRadius:8,padding:8,display:'inline-flex'}}><Linkedin/></a>
-              <a href="#" target="_blank" rel="noopener noreferrer" style={{background:'#232b39',borderRadius:8,padding:8,display:'inline-flex'}}><Instagram/></a>
-              <a href="#" target="_blank" rel="noopener noreferrer" style={{background:'#232b39',borderRadius:8,padding:8,display:'inline-flex'}}><Facebook/></a>
+              <div style={{display:'flex',gap:12}}>
+              <a href="https://www.linkedin.com/in/siddharth-sakalle-b0a2ba8a/?originalSubdomain=in" target="_blank" rel="noopener noreferrer" style={{background:'#232b39',borderRadius:8,padding:8,display:'inline-flex'}} aria-label="LinkedIn">
+                <Linkedin color="#e5e7eb" size={18} />
+              </a>
+              <a href="https://www.instagram.com/siddharthsakalle/" target="_blank" rel="noopener noreferrer" style={{background:'#232b39',borderRadius:8,padding:8,display:'inline-flex'}} aria-label="Instagram">
+                <Instagram color="#e5e7eb" size={18} />
+              </a>
+              <a href="https://www.facebook.com/siddharth.sakalle/" target="_blank" rel="noopener noreferrer" style={{background:'#232b39',borderRadius:8,padding:8,display:'inline-flex'}} aria-label="Facebook">
+                <Facebook color="#e5e7eb" size={18} />
+              </a>
             </div>
           </div>
         </div>
