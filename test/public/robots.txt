@@ -1,6 +1,3 @@
-# https://www.robotstxt.org/robotstxt.html
 User-agent: *
-Disallow:
-
-# Sitemap
+Allow: /
 Sitemap: https://physio-sid.vercel.app/sitemap.xml
