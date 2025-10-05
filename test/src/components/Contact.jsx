@@ -141,11 +141,10 @@ export const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-16 lg:py-24 bg-gradient-to-br from-slate-50 to-blue-50">
+    <section id="contact" className="py-16 lg:py-24 bg-gradient-to-br from-slate-50 to-blue-50" style={{ paddingTop: '8px' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center space-y-4 mb-16">
-          <Badge className="bg-blue-100 text-blue-800 hover:bg-blue-200">
-          </Badge>
+
           <h2 className="text-4xl lg:text-5xl font-bold text-gray-900">
             
             <span className="text-blue-600 block">Book Your Consultation</span>
@@ -228,7 +227,7 @@ export const Contact = () => {
 
                   <div className="space-y-2">
                     <label className="text-sm font-medium text-gray-700">Message</label>
-                    <p>
+                    <div></div>
                     <Textarea
                       name="message"
                       value={formData.message}
@@ -236,8 +235,8 @@ export const Contact = () => {
                       placeholder="Tell us about your condition, symptoms, or specific requirements..."
                       rows={4}
                       className="border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+                      style={{ height: '81px', width: '283px' }}
                     />
-                    </p>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-2">

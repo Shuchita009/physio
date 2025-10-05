@@ -112,7 +112,7 @@ export const AddTestimonial = ({ onTestimonialAdded }) => {
         </div>
         <div>
           <label htmlFor="comment" className="block text-sm font-medium text-gray-700">Your Testimonial </label>
-          <p>
+          <div>
           <Textarea
             id="comment"
             name="comment"
@@ -122,7 +122,8 @@ export const AddTestimonial = ({ onTestimonialAdded }) => {
             rows={4}
             required
             className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500"
-          /> </p>
+            style={{ height: '81px', width: '283px' }}
+          /> </div>
         </div>
 
         

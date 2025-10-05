@@ -243,6 +243,7 @@ export const Contact = () => {
 
                   <div className="space-y-2">
                     <label className="text-sm font-medium text-gray-700">Preferred Date</label>
+                    <p></p>
                     <Input
                       type="date"
                       name="preferredDate"
