@@ -11,8 +11,8 @@ export const contactInfo = {
   email: "dr.siddharth@example.com",
   emergency: "+919592948779",
   hours: {
-    weekday: '9:00 AM - 6:00 PM',
-    saturday: '9:00 AM - 2:00 PM',
+    weekday: '6:00 PM - 9:00 PM',
+    saturday: '3:00 PM - 9:00 PM',
     sunday: 'Closed'
   }
 };

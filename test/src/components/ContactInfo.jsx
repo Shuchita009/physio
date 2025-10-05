@@ -23,6 +23,11 @@ export const ContactInfo = () => {
               <Mail/>
               <span>physio.siddharth@gmail.com</span>
             </div>
+            <div style={{fontWeight:700,marginBottom:4}}>Working Hours</div>
+            <div style={{color:'#b6bbc6',marginBottom:10}}>
+              <div>Mon - Fri: 6:00 PM - 9:00 PM</div>
+              <div>Saturday: 3:00 PM - 9:00 PM</div>
+            </div>
             <div style={{fontWeight:700,marginBottom:4}}>Specializations</div>
             <div style={{color:'#b6bbc6'}}>
               <div>Sports Rehabilitation</div>
