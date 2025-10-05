@@ -81,19 +81,6 @@ export const AddTestimonial = ({ onTestimonialAdded }) => {
             className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500"
           />
         </div>
-        {/* <div>
-          <label htmlFor="sport" className="block text-sm font-medium text-gray-700" >Your Sport/Activity </label>
-          <Input
-            type="text"
-            id="sport"
-            name="sport"
-            value={formData.sport}
-            onChange={handleInputChange}
-            placeholder="e.g., Running, Weightlifting, Daily Life"
-            required
-            className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500"
-          />
-        </div> */}
         <div>
           <label className="block text-sm font-medium text-gray-700">Rating </label>
      

@@ -186,7 +186,7 @@ const Gallery = ({ images }) => {
               </div>
 
               {/* Controls */}
-              <button
+              {/* <button
                 onClick={prev}
                 aria-label="Previous image"
                 className="absolute top-1/2 -translate-y-1/2 left-3 bg-white/90 hover:bg-white text-black h-10 w-10 rounded-full shadow flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -204,13 +204,13 @@ const Gallery = ({ images }) => {
               >
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5">
                   <path d="M9 6l6 6-6 6" />
-                </svg>
-              </button>
+                </svg> */}
+              {/* </button> */}
 
               {/* Counter */}
-              <div className="absolute bottom-2 right-2 bg-black/60 text-white text-sm px-2 py-1 rounded">
+              {/* <div className="absolute bottom-2 right-2 bg-black/60 text-white text-sm px-2 py-1 rounded">
                 {currentIndex + 1} / {effectiveImages.length}
-              </div>
+              </div> */}
             </div>
           )}
         </div>

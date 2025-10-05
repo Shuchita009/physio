@@ -1,7 +1,7 @@
 import React from 'react';
 
 const cards = [
-  { id: 1, title: "🎓 Master's in Physiotherapy, Orthopedic, Sports and Manual Therapy", place: 'University of South Australia 2017', year: '2007' },
+  { id: 1, title: "🎓 Master's in Physiotherapy, Orthopedic, Sports and Manual Therapy", place: 'University of South Australia 2007', year: '2007' },
   { id: 3, title: "🎓 Certification in Ergonomics", place: 'United States of America 2019', year: '2019' }
 ];
 

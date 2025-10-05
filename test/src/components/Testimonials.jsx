@@ -49,9 +49,10 @@ export const Testimonials = () => {
   );
 
   return (
-    <section id="testimonials" className="section-card" style={{marginTop:0}}>
-      <div className="mx-auto max-w-4xl p-4">
-        <h2 style={{fontSize:22,textAlign:'center', marginBottom: '15px'}}>What Our Clients Say</h2>
+    <section id="testimonials" className="section-card" style={{ marginTop: 0 }}>
+      <div className="container mx-auto px-4">
+        <div className="max-w-3xl mx-auto">
+        <h2 style={{ fontSize: 22, textAlign: 'center', marginBottom: '15px' }}>What Our Clients Say</h2>
         {loading ? (
           <div style={{textAlign:'center',margin:40}}>Loading testimonials…</div>
         ) : error ? (
@@ -114,6 +115,7 @@ export const Testimonials = () => {
           </div>
         )}
         <AddTestimonial onTestimonialAdded={fetchTestimonials} />
+        </div>
       </div>
     </section>
   );
