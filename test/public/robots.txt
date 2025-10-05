@@ -1,3 +1,6 @@
+User-agent: PerplexityBot
+Allow: /
+
 User-agent: *
 Allow: /
 Sitemap: https://physio-sid.vercel.app/sitemap.xml
