@@ -8,6 +8,7 @@ import { Hero } from './components/Hero';
 import ProfileHero from './components/ProfileHero';
 import EducationList from './components/EducationList';
 import AboutDr from './components/AboutDr';
+import Gallery from './components/Gallery';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
   <ProfileHero />
   <AboutDr />
   <EducationList />
+    <Gallery />
       <Services />
       <Testimonials />
       <Contact />

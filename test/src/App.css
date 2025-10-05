@@ -2,6 +2,9 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Make in-page anchors not hide under sticky header */
+section { scroll-margin-top: 72px; }
+
 :root {
   --bg-gradient-start: #f8fbff;
   --bg-gradient-end: #f1f9ff;

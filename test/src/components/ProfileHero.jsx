@@ -17,7 +17,7 @@ export default function ProfileHero({ photoUrl }) {
     marginBottom: 32
   };
 
-  
+
   const panelStyle = {
     // gradient overlay + primary image + embedded fallback
     backgroundImage: `linear-gradient(90deg, rgba(230,246,255,0.6) 0%, rgba(230,255,247,0.6) 100%), url(${bgPhoto}), url(${EMBEDDED_PHOTO})`,
@@ -95,18 +95,21 @@ export default function ProfileHero({ photoUrl }) {
       <div style={panelStyle}>
         <div style={{ maxWidth: 900, margin: '0 auto', textAlign: 'center', position: 'relative' }}>
           <div style={avatarWrap}>
-            {/* <div style={avatarRing} /> */}
-            <div
-              style={{
-                // ...avatarInner,
-                // remove the default gradient entirely
-                // background: undefined
-              }}
-            >
+            <div style={avatarRing} aria-hidden="true" />
+            <div style={avatarInner}>
               <img
-                // src={bgPhoto}
-                // alt="Dr Siddharth Sakalle"
-                // style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '50%' }}
+                src={bgPhoto}
+                alt="Dr. Siddharth Sakalle"
+                style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '50%' }}
+                onError={(e) => {
+                  const el = e.currentTarget;
+                  if (!el.dataset.fallback) {
+                    el.dataset.fallback = '1';
+                    el.src = '/assets/sid.jpg'; // fallback to public asset
+                  } else {
+                    el.src = EMBEDDED_PHOTO; // final inline fallback
+                  }
+                }}
               />
             </div>
           </div>
@@ -123,7 +126,7 @@ export default function ProfileHero({ photoUrl }) {
           <Users color="#2563eb" size={20} />
           <div>
             <div style={statNumber}>500+</div>
-            <div style={statLabel}>Athletes Treated</div>
+            <div style={statLabel}>Clients Treated</div>
           </div>
         </div>
       </div>

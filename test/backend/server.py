@@ -273,8 +273,8 @@ SAMPLE_SERVICES = [
     },
     {
         "id": str(uuid.uuid4()),
-        "title": "General Physiotherapy",
-        "description": "Treatment for general aches and injuries",
+        "title": "Orthopedic Physiotherapy",
+        "description": "Treatment for orthopedic conditions and injuries",
 
         "features": [
             "Physical Assessment",

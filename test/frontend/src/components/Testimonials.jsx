@@ -129,7 +129,7 @@ export const Testimonials = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="text-center">
                 <div className="text-3xl font-bold text-blue-600 mb-2">500+</div>
-                <p className="text-gray-700 font-medium">Athletes Treated</p>
+                <p className="text-gray-700 font-medium">Clients Treated</p>
                 <p className="text-gray-600 text-sm mt-1">Across multiple sports disciplines</p>
               </div>
               <div className="text-center">
