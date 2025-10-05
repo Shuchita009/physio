@@ -24,7 +24,7 @@ export const Hero = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
 
         <h4 className="font-semibold text-gray-900 flex items-center gap-4 mt-6 mb-3" >
-          <span>🎓 MPT Australia | Sports & ortho</span>
+          <span>🎓 MPT Australia | Sports & Ortho</span>
         </h4>
         <h4 className="font-semibold text-gray-900 flex items-center gap-4 mt-6 mb-3">
           <span>👥 Elite Athletes | Olympic & National</span>
@@ -38,7 +38,11 @@ export const Hero = () => {
           <li className="flex items-center text-gray-700 text-lg">
             Worked with Saina Nehwal, Lakshya Sen and MC Mary Kom
           </li>
+
           <li className="flex items-center text-gray-700 text-lg">
+            Provided Physio care across Clinics, Hospital and Sports clubs in Australia
+          </li>
+                    <li className="flex items-center text-gray-700 text-lg">
             Certified in Ergonomics from USA
           </li>
         </ul>
