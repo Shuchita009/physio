@@ -7,7 +7,7 @@ export const contactInfo = {
     pincode: "400050",
     country: "India"
   },
-  phone: "+918123499860",
+  phone: "+919592948779",
   email: "dr.siddharth@example.com",
   emergency: "+919592948779",
   hours: {

@@ -35,7 +35,7 @@ export const ContactInfo = () => {
         <hr style={{border:'none',borderTop:'1px solid #232b39',margin:'16px 0 12px 0'}}/>
         <div style={{display:'flex',justifyContent:'space-between',alignItems:'center',flexWrap:'wrap',gap:12}}>
           <div style={{fontSize:13,lineHeight:1.4}}>
-            © 2025 Dr. S S. All rights reserved.<br/>
+            © 2025 Dr. Siddharth Sakalle. All rights reserved.<br/>
             Trusted by Olympic athletes and sports champions worldwide.
           </div>
           <div style={{display:'flex',gap:10}}>
