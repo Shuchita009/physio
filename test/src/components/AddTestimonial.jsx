@@ -65,8 +65,8 @@ export const AddTestimonial = ({ onTestimonialAdded }) => {
   };
 
   return (
-    <div className="mt-16 bg-white p-8 rounded-xl shadow-lg">
-      <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">Share Your Experience</h3>
+    <div className="mt-10 bg-white p-8 rounded-xl shadow-md border border-gray-100">
+      <h3 className="text-2xl font-bold text-gray-900 mb-4 text-center">Share Your Experience</h3>
       <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
         <div>
           <label htmlFor="name" className="block text-sm font-medium text-gray-700" style={{ fontSize: '16px', marginBottom: '8px' }}>Name </label>
