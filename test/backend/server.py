@@ -240,8 +240,8 @@ async def get_doctor_info():
         doc = await db.doctor_info.find_one({})
         if not doc:
             default = DoctorInfo(
-                name="Dr. S S",
-                title="Sports Physiotherapist",
+                name="Dr. Siddharth Sakalle",
+                title="Ortho & Sports Physiotherapist",
                 organization="",
                 phone="",
                 email="",

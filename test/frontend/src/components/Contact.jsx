@@ -109,7 +109,7 @@ export const Contact = () => {
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
             Ready to start your journey to optimal health and performance? Schedule a consultation 
-            with Dr. S S today.
+            with Dr. Siddharth Sakalle today.
           </p>
         </div>
 
