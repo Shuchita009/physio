@@ -141,8 +141,9 @@ export const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-16 lg:py-24 bg-gradient-to-br from-slate-50 to-blue-50" style={{ paddingTop: '8px' }}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="contact" className="pt-16 lg:pt-24 pb-8 lg:pb-12 bg-gradient-to-br from-slate-50 to-blue-50" style={{ paddingTop: '8px' }}>
+      <div className="container mx-auto px-4">
+        <div className="max-w-3xl mx-auto">
         <div className="text-center space-y-4 mb-16">
 
           <h2 className="text-4xl lg:text-5xl font-bold text-gray-900">
@@ -155,7 +156,7 @@ export const Contact = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+  <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
        
           <div className="lg:col-span-2">
             <Card className="shadow-xl border-0">
@@ -270,6 +271,7 @@ export const Contact = () => {
             </Button>
           </div>
         </div> */}
+      </div>
       </div>
     </section>
   );

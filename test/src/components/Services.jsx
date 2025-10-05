@@ -74,7 +74,8 @@ export const Services = () => {
       className="py-16 lg:py-24 bg-gradient-to-br from-gray-50 to-blue-50"
       style={{ paddingTop: '8px', paddingBottom: '24px' }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto px-4">
+        <div className="max-w-3xl mx-auto">
         <div className="text-center space-y-2 mb-8" style={{ marginBottom: '8px' }}>
 
           <h2 className="text-4xl lg:text-5xl font-bold text-gray-900">
@@ -131,7 +132,7 @@ export const Services = () => {
 
         {/* Additional Info */}
         <div className="mt-16 text-center">
-          <div className="bg-white rounded-2xl p-8 shadow-lg max-w-4xl mx-auto">
+          <div className="bg-white rounded-2xl p-8 shadow-lg max-w-3xl mx-auto">
             <h3 className="text-2xl font-bold text-gray-900 mb-4">
               Why Choose Our Services?
             </h3>
@@ -151,6 +152,7 @@ export const Services = () => {
                 </div>
                 <p className="text-gray-600 text-sm">Trusted by Olympic athletes and professional sports organizations</p>
               </div>
+            </div>
             </div>
           </div>
         </div>
