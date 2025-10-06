@@ -118,6 +118,11 @@ export const Services = () => {
                   </ul>
                 </div>
 
+
+              </CardContent>
+            </Card>
+          ))}
+        </div>
                 <Button 
                   className="w-full bg-teal-600 hover:bg-teal-700 text-white transition-colors duration-200"
                   style={{ paddingTop: 8, paddingBottom: 8, marginTop: 8 }}
@@ -125,11 +130,6 @@ export const Services = () => {
                 >
                   Book This Service
                 </Button>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-
         {/* Additional Info */}
         <div className="mt-16 text-center">
           <div className="bg-white rounded-2xl p-8 shadow-lg max-w-3xl mx-auto">

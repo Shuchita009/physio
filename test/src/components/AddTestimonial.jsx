@@ -105,7 +105,7 @@ export const AddTestimonial = ({ onTestimonialAdded }) => {
             name="comment"
             value={formData.comment}
             onChange={handleInputChange}
-            placeholder="Share your experience with Dr. SS..."
+            placeholder="Share your experience with Dr. Siddharth Sakalle"
             rows={4}
             required
             className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500"
