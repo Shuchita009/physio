@@ -53,8 +53,8 @@ export const services = [
 ];
 
 export const testimonials = [
-  { id: 't1', name: 'S', sport: 'Cricket', rating: 5, comment: "The ergonomic consultation and movement analysis significantly improved my performance.", achievement: 'IPL Player' },
-  { id: 't2', name: 'PS', sport: 'Tennis', rating: 5, comment: "Dr. Siddharth's post-surgical rehabilitation helped me return to tennis after my shoulder surgery.", achievement: 'National Champion' },
-  { id: 't3', name: 'SN', sport: 'Badminton', rating: 5, comment: "His understanding of athlete needs is exceptional.", achievement: 'Olympic Bronze Medalist' },
-  { id: 't4', name: 'LS', sport: 'Badminton', rating: 5, comment: "Highly recommend his services.", achievement: 'World Championship Medalist' }
+  { id: 't1', name: 'Saina Nehwal', sport: 'Badminton - Olympic Medalist/World Championship', rating: 5, comment: "Siddharth is an expert, i enjoy his therapy.", achievement: 'Badminton Player' },
+  { id: 't2', name: 'Kanika Kanwal', sport: 'Badminton - National Champion', rating: 5, comment: "Physiotherapist are an integral part of players journey and i am blessed to be associated with best in the field, Thanks Dr Siddharth Sakalle Sir", achievement: 'National Champion' },
+  { id: 't3', name: 'Ajith Singh Yadav', sport: 'Javeline - Para Olympic Medalist', rating: 5, comment: "Gratitude to support team and Siddharth Sakalle for his unvavering.", achievement: 'Para Olympic Medalist' },
+  { id: 't4', name: 'Sumukh GS', sport: 'Badminton - State Level', rating: 5, comment: "I have been traning with Dr Siddharth Sakalle, Its made a huge difference in my fitness", achievement: 'World Championship Medalist' }
 ];
