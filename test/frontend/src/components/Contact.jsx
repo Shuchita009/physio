@@ -13,7 +13,7 @@ import { appointmentsAPI, servicesAPI } from '../services/api';
 export const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
-    email: '',
+
     phone: '',
     service: '',
     preferredDate: '',
@@ -69,7 +69,7 @@ export const Contact = () => {
     try {
       const response = await appointmentsAPI.create({
         name: formData.name,
-        email: formData.email,
+
         phone: formData.phone,
         service: formData.service,
         preferredDate: formData.preferredDate,
@@ -80,7 +80,7 @@ export const Contact = () => {
         toast.success(response.message || 'Appointment request sent successfully! Dr. Siddharth will contact you within 24 hours.');
         setFormData({
           name: '',
-          email: '',
+
           phone: '',
           service: '',
           preferredDate: '',

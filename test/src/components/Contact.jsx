@@ -14,7 +14,6 @@ const WHATSAPP_PHONE = '919592948779';
 export const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
-    email: '',
     phone: '',
     service: '',
     preferredDate: '',
@@ -70,7 +69,7 @@ export const Contact = () => {
     try {
       const response = await appointmentsAPI.create({
         name: formData.name,
-        email: formData.email,
+
         phone: formData.phone,
         service: formData.service,
         preferredDate: formData.preferredDate,
@@ -81,7 +80,7 @@ export const Contact = () => {
         toast.success(response.message || 'Appointment request sent successfully! Dr. Siddharth will contact you within 24 hours.');
         setFormData({
           name: '',
-          email: '',
+
           phone: '',
           service: '',
           preferredDate: '',
@@ -103,7 +102,7 @@ export const Contact = () => {
       'Appointment Request from website',
       `Name: ${data.name || '-'}`,
       `Phone: ${data.phone || '-'}`,
-      `Email: ${data.email || '-'}`,
+
       `Service: ${data.service || '-'}`,
       `Preferred Date: ${data.preferredDate || '-'}`,
       `Message: ${data.message || '-'}`,
@@ -160,14 +159,6 @@ export const Contact = () => {
        
           <div className="lg:col-span-2">
             <Card className="shadow-xl border-0">
-              {/* <CardHeader>
-                <CardTitle className="text-2xl text-center mb-2">
-                  Schedule Your Appointment
-                </CardTitle>
-                <p className="text-gray-600 text-center">
-                  Fill out the form below and we'll get back to you within 24 hours
-                </p>
-              </CardHeader> */}
               <CardContent>
                 <form onSubmit={handleSubmit} className="space-y-8">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

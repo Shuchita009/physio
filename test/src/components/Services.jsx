@@ -117,19 +117,17 @@ export const Services = () => {
                     ))}
                   </ul>
                 </div>
-
-
               </CardContent>
             </Card>
+
           ))}
-        </div>
-                <Button 
+          <div>
+             <Button 
                   className="w-full bg-teal-600 hover:bg-teal-700 text-white transition-colors duration-200"
-                  style={{ paddingTop: 8, paddingBottom: 8, marginTop: 8 }}
-                  onClick={() => handleBookService(service.title)}
-                >
+                  style={{ paddingTop: 8, paddingBottom: 8, marginTop: 8 }}>
                   Book This Service
-                </Button>
+                </Button></div>
+        </div>
         {/* Additional Info */}
         <div className="mt-16 text-center">
           <div className="bg-white rounded-2xl p-8 shadow-lg max-w-3xl mx-auto">
