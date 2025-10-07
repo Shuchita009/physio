@@ -273,7 +273,7 @@ SAMPLE_SERVICES = [
     },
     {
         "id": str(uuid.uuid4()),
-        "title": "Orthopedic Physiotherapy",
+        "title": "Orthopedic Rehabitation",
         "description": "Treatment for orthopedic conditions and injuries",
 
         "features": [

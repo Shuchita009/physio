@@ -60,8 +60,7 @@ export default function ProfileHero({ photoUrl }) {
     alignItems: 'center',
     justifyContent: 'center',
     color: '#fff',
-    fontWeight: 700,
-    fontSize: 20,
+  fontWeight: 700,
     overflow: 'hidden'
   };
 
@@ -87,8 +86,8 @@ export default function ProfileHero({ photoUrl }) {
     zIndex: 3
   };
 
-  const statNumber = { fontSize: 20, fontWeight: 700 };
-  const statLabel = { fontSize: 12, color: '#6b7280' };
+  const statNumber = { fontWeight: 700 };
+  const statLabel = { color: '#6b7280' };
 
   return (
     <section style={containerStyle}>
@@ -114,7 +113,7 @@ export default function ProfileHero({ photoUrl }) {
             </div>
           </div>
 
-          <h1 style={{ fontSize: 28, fontWeight: 800, color: '#0f172a' }}>Dr. Siddharth Sakalle</h1>
+          <h1 style={{ fontWeight: 800, color: '#0f172a' }}>Dr. Siddharth Sakalle</h1>
           <div style={{ maxWidth: 720, margin: '12px auto 0', color: '#374151', lineHeight: 1.6, textAlign: 'center' }}>
             {/* Trusted by Olympic athletes and Sports champions. Specialized in manual therapy, musculoskeletal rehabilitation, and sports injury recovery with international expertise. */}
           </div>

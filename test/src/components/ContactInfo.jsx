@@ -7,7 +7,7 @@ export const ContactInfo = () => {
       <div className="container" style={{maxWidth:900,margin:'0 auto',padding:'0 16px'}}>
         <div style={{display:'flex',flexWrap:'wrap',gap:16,justifyContent:'space-between'}}>
           <div style={{minWidth:260,flex:1}}>
-            <div style={{fontWeight:700,fontSize:20,marginBottom:12}}>Contact Information</div>
+            <div style={{fontWeight:700,marginBottom:12}}>Contact Information</div>
             <div style={{display:'flex',alignItems:'flex-start',gap:10,marginBottom:6}}>
               <MapPin style={{marginTop:2}}/>
               <div>
@@ -39,7 +39,7 @@ export const ContactInfo = () => {
         </div>
         <hr style={{border:'none',borderTop:'1px solid #232b39',margin:'16px 0 12px 0'}}/>
         <div style={{display:'flex',justifyContent:'space-between',alignItems:'center',flexWrap:'wrap',gap:12}}>
-          <div style={{fontSize:13,lineHeight:1.4}}>
+          <div style={{lineHeight:1.4}}>
             © 2025 Dr. Siddharth Sakalle. All rights reserved.<br/>
             Trusted by Olympic athletes and sports champions worldwide.
           </div>

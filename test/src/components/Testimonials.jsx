@@ -52,7 +52,7 @@ export const Testimonials = () => {
     <section id="testimonials" className="section-card" style={{ marginTop: 0 }}>
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto">
-        <h2 style={{ fontSize: 22, textAlign: 'center', marginBottom: '15px' }}>What Our Clients Say</h2>
+  <h2 style={{ textAlign: 'center', marginBottom: '15px', fontWeight: 700 }}>What Our Clients Say</h2>
         {loading ? (
           <div style={{textAlign:'center',margin:40}}>Loading testimonials…</div>
         ) : error ? (
@@ -91,16 +91,15 @@ export const Testimonials = () => {
                 >
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 4, marginBottom: 6, textAlign: 'left' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 6, justifyContent: 'flex-start', fontWeight: 700 }}>
-                      <span style={{ fontSize: 14 }}>{t.name}</span>
+                      <span>{t.name}</span>
                       <div style={{ display: 'flex', alignItems: 'center' }}>{renderStars(t.rating)}</div>
                     </div>
-                    {t.sport && <div style={{ color: '#6b7280', fontSize: 12 }}>{t.sport}</div>}
+                    {t.sport && <div style={{ color: '#6b7280' }}>{t.sport}</div>}
                   </div>
                   <div
                     style={{
                       fontStyle: 'italic',
                       color: '#334155',
-                      fontSize: 14,
                       overflow: 'hidden',
                       display: '-webkit-box',
                       WebkitLineClamp: 3,

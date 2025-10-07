@@ -83,8 +83,8 @@ export const Services = () => {
             <span className="text-teal-600 block">Specialized Physiotherapy Services</span>
           </h2>
           <p
-            className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed"
-            style={{ fontSize: '14px', lineHeight: 1.35, marginTop:2 }}
+            className="text-gray-600 max-w-3xl mx-auto"
+            style={{ lineHeight: 1.35, marginTop:2 }}
           >
             Evidence-based treatments tailored for athletes and individuals seeking optimal physical performance and recovery.
           </p>
@@ -94,23 +94,23 @@ export const Services = () => {
           {services.map((service) => (
             <Card key={service.id} className="group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border-0 shadow-md">
                 <CardContent className="space-y-3 p-4" style={{ padding: 2 }}>
-                  <CardTitle className="text-lg font-bold mb-1 group-hover:text-teal-600 transition-colors duration-200" style={{ fontSize: '14px', lineHeight: 2, marginTop: 6 ,marginBottom: 2}}>
+                  <CardTitle className="text-base font-bold mb-1 group-hover:text-teal-600 transition-colors duration-200" style={{ lineHeight: 2, marginTop: 6 ,marginBottom: 2}}>
                     {service.title}
                   </CardTitle>
-                  <div className="text-gray-600" style={{ fontSize: '14px', lineHeight: 1.35 }}>
+                  <div className="text-gray-600" style={{ lineHeight: 1.35 }}>
                     {service.description}
                   </div>
                 
                 <div className="space-y-1">
-                  <h4 className="font-semibold text-gray-900 flex items-center" style={{ fontSize: '14px', lineHeight: 2, marginTop: 5 ,marginBottom: 0}}>
+                  <h4 className="font-semibold text-gray-900 flex items-center" style={{ lineHeight: 2, marginTop: 5 ,marginBottom: 0}}>
                     What's Included:
                   </h4>
                   <ul className="list-disc pl-5" style={{ marginTop: 1 }}>
                     {service.features.map((feature, index) => (
                       <li
                         key={index}
-                        className="flex items-center text-gray-600"
-                        style={{ marginBottom: 0, fontSize: '14px' }}
+                        className="flex items-center text-gray-700"
+                        style={{ marginBottom: 0 }}
                       >
                         <span>{feature}</span>
                       </li>
@@ -136,12 +136,12 @@ export const Services = () => {
             </h3>
               <div className="font-semibold text-gray-900 flex items-center gap-4 mt-6 mb-3" >
                 <h4>⏰ Flexible Scheduling</h4>
-                <p className="text-gray-600 text-sm" >Easy appointment booking with flexible timing to suit your schedule</p>       
+                <p className="flex items-center text-gray-700" >Easy appointment booking with flexible timing to suit your schedule</p>       
               </div>
 
               <div className="font-semibold text-gray-900 flex items-center gap-4 mt-6 mb-3">
                 <h4>✅	Evidence-Based Care</h4>
-                <p className="text-gray-600 text-sm">Treatment protocols based on latest research and international standards</p>       
+                <p className="flex items-center text-gray-700">Treatment protocols based on latest research and international standards</p>       
               </div>
 
               <div className="text-center">

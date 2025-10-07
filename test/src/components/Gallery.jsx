@@ -144,10 +144,11 @@ const Gallery = ({ images }) => {
   return (
     <section id="gallery" className="py-16 bg-white">
       
+      
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-4xl font-bold text-center mb-8 text-gray-800">Gallery</h2>
-          <p className="text-center text-gray-600 max-w-3xl mx-auto mb-8">Swipe through moments with patients and at events.</p>
+          <p className="flex items-center text-gray-700">Swipe through moments with patients and at events.</p>
 
           {effectiveImages.length === 0 ? (
             <div className="text-center text-gray-500">No images found. Add files into public/assets/gallery.</div>

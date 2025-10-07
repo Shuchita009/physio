@@ -69,7 +69,7 @@ export const AddTestimonial = ({ onTestimonialAdded }) => {
       <h3 className="text-2xl font-bold text-gray-900 mb-4 text-center">Share Your Experience</h3>
       <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
         <div>
-          <label htmlFor="name" className="block text-sm font-medium text-gray-700" style={{ fontSize: '16px', marginBottom: '8px' }}>Name </label>
+          <label htmlFor="name" className="block font-medium text-gray-700" style={{ marginBottom: '8px' }}>Name </label>
           <Input
             type="text"
             id="name"
